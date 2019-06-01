@@ -37,9 +37,10 @@ while true ; do
     esac
 done
 
-sudo docker build --tag="docker-registry.buckyang.com:5050/node-$PROJECT_NAME:$IMAGE_VERSION" .
+pushd $PROJECT_ROOT_DIR > /dev/null
+sudo docker build --tag="docker-registry.buckyang.com:5050/node-$PROJECT_NAME:latest" 
 sudo docker push docker-registry.buckyang.com:5050/node-$PROJECT_NAME:latest
-
+popd > /dev/null	
 
 
 

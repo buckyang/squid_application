@@ -1,7 +1,7 @@
 {
-  "name": "screenshot",
+  "name": "puppeteer_application",
   "version": "1.0.0",
-  "description": "screenshot service",
+  "description": "puppeteer application",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,6 @@
     "start": "node app.js"
   },
   "keywords": [
-    "screenshot",
     "puppeteer"
   ],
   "author": "buck",

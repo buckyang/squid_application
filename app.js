@@ -9,6 +9,7 @@ const app = express();
   const cluster = await Cluster.launch({
       concurrency: Cluster.CONCURRENCY_PAGE,
       maxConcurrency: 4,
+      puppeteerOptions: {args: ['--no-sandbox', '--disable-setuid-sandbox']}
   });
   await cluster.task(async ({ page, data: query, worker }) => {
     let startTime = new Date().getTime();

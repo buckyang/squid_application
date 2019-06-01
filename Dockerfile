@@ -1,7 +1,7 @@
 FROM docker-registry.buckyang.com:5050/node-puppeteer_base:latest
 
 RUN mkdir -p /opt/app/puppeteer_application && chown -R app:app /opt/app/puppeteer_application
-COPY --chown=app:app ./* /opt/app/puppeteer_application/
+COPY --chown=app:app . /opt/app/puppeteer_application/
 
 WORKDIR /opt/app/puppeteer_application
 

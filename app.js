@@ -16,12 +16,12 @@ const app = express();
 
 
     page.setViewport({
-        width: (query.width? query.width: 375),
-        height: (query.height? query.height: 667),
-        deviceScaleFactor: (query.deviceScaleFactor ? query.deviceScaleFactor: 1.25)
+        width: (query.width? parseInt(query.width): 375),
+        height: (query.height? parseInt(query.height): 667),
+        deviceScaleFactor: (query.deviceScaleFactor ? parseFloat(query.deviceScaleFactor): 1.5)
     });    
     await page.goto(query.url);
-    let screenshotResult = page.screenshot({fullPage: true, quality: (query.quality? query.quality: 75), type: 'jpeg'});
+    let screenshotResult = page.screenshot({fullPage: true, quality: (query.quality? parseInt(query.quality): 85), type: 'jpeg'});
 
 
     let endTime = new Date().getTime();

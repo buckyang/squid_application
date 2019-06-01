@@ -8,7 +8,7 @@ WORKDIR /opt/app/puppeteer_application
 # Add user so we don't need --no-sandbox.
 RUN mkdir -p /home/app/Downloads \
     && chown -R app:app /home/app \
-    && chown -R app:app /opt/app/puppeteer_application
+    && chown -R app:app /opt/app/puppeteer_application/
 
 # Run everything after as non-privileged user.
 USER app

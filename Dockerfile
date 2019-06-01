@@ -12,7 +12,7 @@ RUN mkdir -p /home/app/Downloads \
 
 # Run everything after as non-privileged user.
 USER app
-RUN npm install && ls -lh node_modules
+#RUN npm install && ls -lh node_modules
 
 # --cap-add=SYS_ADMIN
 # https://docs.docker.com/engine/reference/run/#additional-groups

@@ -8,7 +8,7 @@ const app = express();
 (async () => {
   const cluster = await Cluster.launch({
       concurrency: Cluster.CONCURRENCY_PAGE,
-      maxConcurrency: 4,
+      maxConcurrency: process.env.PUPPETEER_MAX_CONCURRENCY? parseInt(process.env.PUPPETEER_MAX_CONCURRENCY): 1,
       puppeteerOptions: {args: ['--no-sandbox', '--disable-setuid-sandbox']}
   });
   await cluster.task(async ({ page, data: query, worker }) => {

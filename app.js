@@ -17,15 +17,17 @@ const app = express();
   app.get('/changeVps', async function(req, res){
     logger.info(`Requested ips ${req.ips}`)
     let confFile = './conf/squid.conf'
-    // 
     let confFileDest = '/etc/squid/squid.conf'
     let squidConfStr = fs.readFileSync(confFile, 'utf-8')
-    // logger.info(`${squidConfStr}`)
-    squidConfStr = squidConfStr.replace('{{sourceServer}}', req.ip);
+    let ips = req.ip.match(/\d+\.\d+.\d+.\d+$/)
+    let ip = ips ? ips[0]: ''
+    squidConfStr = squidConfStr.replace('{{sourceServer}}', ip);
     fs.writeFileSync(confFileDest, squidConfStr)
-    // 
+    
+    
+
     exec('systemctl restart squid',(error, stdout, stderr) => {
-        logger.info(`Changed vps for remote ip ${req.ip}`)
+        logger.info(`Changed vps for remote ip ${ip}`)
         if(error){
             res.end(`Call error: JSON.stringify(Error)`)
         }else{

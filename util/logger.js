@@ -8,7 +8,7 @@ const logger = winston.createLogger({
     ),
     defaultMeta: { service: 'user-service' },
     transports: [
-      new winston.transports.File({ filename: '/opt/logs/puppeteer_application/app_access.log' })
+      new winston.transports.File({ filename: '/opt/logs/squid_application/app_access.log' })
     ]
   });
   if (process.env.NODE_ENV !== 'production') {

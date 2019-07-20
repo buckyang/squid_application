@@ -24,6 +24,7 @@ const app = express();
     fs.writeFileSync(confFileDest, squidConfStr)
     // 
     exec('systemctl restart squid',(error, stdout, stderr) => {
+        logger.info(`Changed vps for remote ip ${req.ip}`)
         if(error){
             res.end(`Call error: JSON.stringify(Error)`)
         }else{

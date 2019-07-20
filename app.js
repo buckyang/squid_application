@@ -19,7 +19,7 @@ const app = express();
     // 
     let confFileDest = '/etc/squid/squid.conf'
     let squidConfStr = fs.readFileSync(confFile, 'utf-8')
-    logger.info(`${squidConfStr}`)
+    // logger.info(`${squidConfStr}`)
     squidConfStr = squidConfStr.replace('{{sourceServer}}', req.ip);
     fs.writeFileSync(confFileDest, squidConfStr)
     // 

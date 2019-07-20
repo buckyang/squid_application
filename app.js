@@ -16,14 +16,14 @@ const app = express();
 
   app.get('/changeVps', async function(req, res){
     let confFile = './conf/squid.conf'
-    // /etc/squid/squid.conf
-    let confFileDest = 'd:/squid.conf'
+    // 
+    let confFileDest = '/etc/squid/squid.conf'
     let squidConfStr = fs.readFileSync(confFile, 'utf-8')
     logger.info(`${squidConfStr}`)
     squidConfStr = squidConfStr.replace('{{sourceServer}}', req.ip);
     fs.writeFileSync(confFileDest, squidConfStr)
-    // systemctl restart squid
-    exec('echo hello',(error, stdout, stderr) => {
+    // 
+    exec('systemctl restart squid',(error, stdout, stderr) => {
         if(error){
             res.end(`Call error: JSON.stringify(Error)`)
         }else{

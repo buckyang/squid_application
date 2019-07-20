@@ -15,6 +15,7 @@ const app = express();
 
 
   app.get('/changeVps', async function(req, res){
+    logger.info(`Requested ips ${req.ips}`)
     let confFile = './conf/squid.conf'
     // 
     let confFileDest = '/etc/squid/squid.conf'
